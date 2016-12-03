@@ -27,11 +27,36 @@ public class LinkedStringListImpl implements StringList {
     }
 
     @Override
+    public void findNode(int position) {
+        if (head == null)
+            return;
+        if (position < 0)
+            return;
+
+        int count = 1;
+        Node currentNode = head;
+        if (position > 1) {
+            while (currentNode.getNext() != null) {
+                ++count;
+                currentNode = currentNode.getNext();
+                break;
+            }
+            if (count != position)
+                return;
+        }
+
+    }
+
+    @Override
     public void replace(String value, int position) {
+        Node nodeToReplace = findNode(value, position);
+        if(nodeToReplace != null)
+        currentNode.setValue(value);
     }
 
     @Override
     public void remove(int position) {
+
     }
 
     @Override

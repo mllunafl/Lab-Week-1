@@ -9,6 +9,8 @@ public interface StringList {
 
     void remove(int position);
 
+    void  findNode (int position);
+
     int size();
 
 }

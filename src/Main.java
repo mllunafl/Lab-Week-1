@@ -11,6 +11,7 @@ public class Main {
         list.add("Hello3");
         System.out.println(list.size());
 
+        list.replace("Bye",2);
         System.out.println(list.size());
     }
 }
