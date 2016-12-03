@@ -26,11 +26,62 @@ public class LinkedStringListImpl implements StringList {
         currentNode.setNext(node);
     }
 
+//    @Override
+//    public Node findNode(int position) {
+//        if (head == null)
+//            return null;
+//        if (position < 0)
+//            return null;
+//
+//        int count = 1;
+//        Node currentNode = head;
+//        if (position > 1) {
+//            while (currentNode.getNext() != null) {
+//                ++count;
+//                currentNode = currentNode.getNext();
+//                if (position == count);
+//                break;
+//            }
+//            if (count != position)
+//                return currentNode;
+//        }
+//
+//        return currentNode;
+//    }
+
     @Override
-    public void findNode(int position) {
+    public String getValue(int position) {
+        if (head == null) {
+            return null;
+        }
+        if (position < 1) {
+            return null;
+        }
+
+        int count = 1;
+        Node currentNode = head;
+
+        if (position > 1) {
+            while (currentNode.getNext() != null) {
+                ++count;
+                currentNode = currentNode.getNext();
+                if (position == count) {
+                    break;
+                }
+            }
+        }
+
+        if (position == count) {
+            return currentNode.getValue();
+        }
+        return null;
+    }
+
+    @Override
+    public void replace(String value, int position) {
         if (head == null)
             return;
-        if (position < 0)
+        if (position < 1)
             return;
 
         int count = 1;
@@ -39,20 +90,20 @@ public class LinkedStringListImpl implements StringList {
             while (currentNode.getNext() != null) {
                 ++count;
                 currentNode = currentNode.getNext();
-                break;
+                if (position == count) {
+                    break;
+                }
             }
-            if (count != position)
-                return;
         }
-
+        if (position == count){
+            currentNode.setValue(value);
+        }
     }
 
-    @Override
-    public void replace(String value, int position) {
-        Node nodeToReplace = findNode(value, position);
-        if(nodeToReplace != null)
-        currentNode.setValue(value);
-    }
+//    @Override
+//    public String peak() {
+//
+//    }
 
     @Override
     public void remove(int position) {

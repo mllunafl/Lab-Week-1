@@ -9,8 +9,9 @@ public interface StringList {
 
     void remove(int position);
 
-    void  findNode (int position);
+    String getValue (int position);
 
     int size();
+
 
 }

@@ -13,5 +13,7 @@ public class Main {
 
         list.replace("Bye",2);
         System.out.println(list.size());
+
+        System.out.println(list.getValue(2));
     }
 }
