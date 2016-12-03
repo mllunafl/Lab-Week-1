@@ -26,28 +26,26 @@ public class LinkedStringListImpl implements StringList {
         currentNode.setNext(node);
     }
 
-//    @Override
-//    public Node findNode(int position) {
-//        if (head == null)
-//            return null;
-//        if (position < 0)
-//            return null;
-//
-//        int count = 1;
-//        Node currentNode = head;
-//        if (position > 1) {
-//            while (currentNode.getNext() != null) {
-//                ++count;
-//                currentNode = currentNode.getNext();
-//                if (position == count);
-//                break;
-//            }
-//            if (count != position)
-//                return currentNode;
-//        }
-//
-//        return currentNode;
-//    }
+    private Node findNode(int position) {
+        if (head == null) {
+             return null;
+        }
+        if (position < 1) {
+            return null;
+        }
+        int count = 1;
+        Node currentNode = head;
+        if (position > 1) {
+            while (currentNode.getNext() != null) {
+                ++count;
+                currentNode = currentNode.getNext();
+                if (position == count) {
+                    break;
+                }
+            }
+        }
+        return currentNode;
+    }
 
     @Override
     public String getValue(int position) {
@@ -79,35 +77,19 @@ public class LinkedStringListImpl implements StringList {
 
     @Override
     public void replace(String value, int position) {
-        if (head == null)
-            return;
-        if (position < 1)
-            return;
-
-        int count = 1;
-        Node currentNode = head;
-        if (position > 1) {
-            while (currentNode.getNext() != null) {
-                ++count;
-                currentNode = currentNode.getNext();
-                if (position == count) {
-                    break;
-                }
+        Node nodeToReplace = findNode(position);
+            if (nodeToReplace != null) {
+                nodeToReplace.setValue(value);
             }
-        }
-        if (position == count){
-            currentNode.setValue(value);
-        }
     }
-
-//    @Override
-//    public String peak() {
-//
-//    }
 
     @Override
     public void remove(int position) {
-
+        Node nodeToRemove = findNode(position);
+        if (nodeToRemove == null)
+            return;
+        Node previousNode = findNode(position - 1);
+        previousNode.setNext(nodeToRemove.getNext());
     }
 
     @Override

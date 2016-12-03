@@ -15,5 +15,16 @@ public class Main {
         System.out.println(list.size());
 
         System.out.println(list.getValue(2));
+
+        list.replace("Hi There", 3);
+        System.out.println(list.getValue(3));
+
+        list.remove(2);
+        System.out.println(list.size());
+        System.out.println(list.getValue(2));
+
+        list.add("Bye");
+        System.out.println(list.size());
+        System.out.println(list.getValue(3));
     }
 }
