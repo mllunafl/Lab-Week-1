@@ -89,6 +89,13 @@ public class LinkedStringListImpl implements StringList {
         if (nodeToRemove == null)
             return;
         Node previousNode = findNode(position - 1);
+
+        if (nodeToRemove == head){
+            nodeToRemove.setNext(null);
+        }
+        if(nodeToRemove.getNext() == null){
+            previousNode.setNext(null);
+        }
         previousNode.setNext(nodeToRemove.getNext());
     }
 
